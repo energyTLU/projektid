@@ -1,20 +1,48 @@
-<ion-header [translucent]="true">
+<ion-header>
   <ion-toolbar>
     <ion-title>
-      Blank
+      Projects
     </ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="addProject()">
+        <ion-icon name="add"></ion-icon>
+      </ion-button>
+      <ion-button (click)="toggleEdit()">{{editButton}}</ion-button>
+    </ion-buttons>  
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content padding>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+  <ion-list>
+    <ion-reorder-group (ionItemReorder)="reorderProjects($event)" [disabled]="!editing">
+      <ion-item-sliding *ngFor="let project of dataService.projects" >
+        <ion-item-options side="start" icon-start (ionSwipe)="toggleDone(project)">
+            <ion-item-option color="primary" expandable (click)="toggleDone(project)">
+              <ion-icon slot="icon-only" name="checkmark"></ion-icon>
+              <ion-label>Done</ion-label>
+            </ion-item-option>
+        </ion-item-options>
+
+        <ion-item (click)="editProject(project)"
+                  [ngClass]="project.isDone ? 'done' : ''">
+          <ion-label>{{project.title}}</ion-label>
+          <ion-reorder *ngIf="editing"></ion-reorder>
+        </ion-item>
+
+        <ion-item-options side="end" icon-start (ionSwipe)="confirmDeleteProject(project)">
+          <ion-item-option color="light">
+            <ion-icon slot="top" name="ios-more"></ion-icon>
+            <ion-label>More...</ion-label>
+          </ion-item-option>
+          <ion-item-option color="danger" expandable (click)="confirmDeleteProject(project)">
+            <ion-icon slot="icon-only" name="trash"></ion-icon>
+            <!--ion-label>Delete...</ion-label-->
+          </ion-item-option>
+        </ion-item-options>
+      
+      </ion-item-sliding>
+    </ion-reorder-group>
+  </ion-list>
+
 </ion-content>
