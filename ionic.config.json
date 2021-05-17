@@ -1,0 +1,7 @@
+{
+  "name": "projektid",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
