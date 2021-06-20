@@ -17,27 +17,28 @@
   <ion-list>
     <ion-reorder-group (ionItemReorder)="reorderProjects($event)" [disabled]="!editing">
       <ion-item-sliding *ngFor="let project of dataService.projects" >
-        <ion-item-options side="start" icon-start (ionSwipe)="toggleDone(project)">
-            <ion-item-option color="primary" expandable (click)="toggleDone(project)">
-              <ion-icon slot="icon-only" name="checkmark"></ion-icon>
-              <ion-label>Done</ion-label>
-            </ion-item-option>
-        </ion-item-options>
+        
 
-        <ion-item (click)="editProject(project)"
+        <ion-item (click)="projectDetails(project)"
                   [ngClass]="project.isDone ? 'done' : ''">
-          <ion-label>{{project.title}}</ion-label>
+          <ion-card>
+            
+            <img src="assets/icon/pilt1.png" class="image-responsive"/>
+            <ion-card-header>
+              <ion-card-title>{{project.title}}</ion-card-title>
+            </ion-card-header>
+            <ion-card-content>
+              {{project.description}}
+            </ion-card-content>
+          </ion-card>
           <ion-reorder *ngIf="editing"></ion-reorder>
         </ion-item>
 
         <ion-item-options side="end" icon-start (ionSwipe)="confirmDeleteProject(project)">
-          <ion-item-option color="light">
-            <ion-icon slot="top" name="ios-more"></ion-icon>
-            <ion-label>More...</ion-label>
-          </ion-item-option>
+         
           <ion-item-option color="danger" expandable (click)="confirmDeleteProject(project)">
             <ion-icon slot="icon-only" name="trash"></ion-icon>
-            <!--ion-label>Delete...</ion-label-->
+            
           </ion-item-option>
         </ion-item-options>
       

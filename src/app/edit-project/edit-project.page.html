@@ -14,6 +14,17 @@
 
 <ion-content>
     <ion-list>
+      <ion-card>
+            
+        <img src="assets/icon/pilt1.png" class="image-responsive"/>
+        <ion-button (click)="fileChooser()" color="light" expand="full">Upload image</ion-button>
+        <ion-card-header>
+          <ion-card-title>{{project.title}}</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          {{project.description}}
+        </ion-card-content>
+      </ion-card>
         <ion-item>
           <ion-label position="floating">Title</ion-label>
           <ion-input [(ngModel)]="project.title" type="text"></ion-input>
@@ -22,10 +33,11 @@
           <ion-label position="floating">Description</ion-label>
           <ion-input [(ngModel)]="project.description" type="text"></ion-input>
         </ion-item>
-        <ion-item>
+        <!-- <ion-item>
           <ion-label>Is Done</ion-label>
           <ion-checkbox slot="start" [(ngModel)]="project.isDone"></ion-checkbox>
-        </ion-item>    
+        </ion-item>     -->
+        
       </ion-list>
       <ion-button expand="full" (click)="save()">Save</ion-button>    
 </ion-content>

@@ -1,0 +1,55 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title padding-left="20px">
+      Project Details
+    </ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home"></ion-back-button>
+
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-button (click)="editProject(project)">
+        <ion-label>EDIT</ion-label>
+      </ion-button>
+    </ion-buttons>
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+
+  <ion-list>
+
+    <ion-card>
+
+      <img src="assets/icon/pilt1.png" class="image-responsive" />
+      <ion-card-header>
+        <ion-card-title>{{project.title}}</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        {{project.description}}
+      </ion-card-content>
+
+
+
+
+      <!-- Expand -->
+      
+        
+      
+      <ion-button (click)="floorPlans(project)" color="light" expand="full" detail><span>Floor Plans</span></ion-button>
+    
+      <ion-button color="light" expand="full"><span>Sections</span></ion-button>
+      <ion-button color="light" expand="full"><span>Details</span></ion-button>
+      <ion-button color="light" expand="full"><span>Renders</span></ion-button>
+      
+
+
+
+
+    </ion-card>
+
+  </ion-list>
+
+
+</ion-content>

@@ -31,7 +31,7 @@ this.project = new Project();
 
   save() {
     this.dataService.save(this.project);
-    this.navCtrl.navigateBack('/home');
+    this.navCtrl.navigateBack('/project-details');
   }
   deleteProject() {
     this.dataService.delete(this.project);
